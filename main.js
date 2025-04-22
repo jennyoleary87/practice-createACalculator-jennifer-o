@@ -50,10 +50,12 @@ const calculator = {
     randomNum: function (max, min = 0) {
         let randNum = Math.random();
         return randNum * (max - min) + min;
+        // ALTERNATE SOLUTION: return Math.floor(Math.random() * (max - min + 1)) + min;
     },
     customRound: function (num, dec) {
         let factor = 10 ** dec;
-        return Math.round(num * factor) / factor; // round first the factor back out
+        return Math.round(num * factor) / factor; // round first then factor
+        // ALTERNATE SOLUTION: return Number(num.toFixed(dec));
     },
 }
 
