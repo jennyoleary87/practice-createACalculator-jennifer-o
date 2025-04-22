@@ -31,24 +31,36 @@ where the user can select an operation and input the required values.
 ● Round 23.67891 to 2 decimal places
 */
 
-function getRandomNumber(max, min = 0) {
-    let randNum = Math.random();
-    console.log(randNum);
-    return randNum * (max - min) + min;
-};
-console.log(getRandomNumber(10, 6));
-console.log(getRandomNumber(100));
-
-function roundToDecimalPlace(num, dec) {
-    let factor = 10 ** dec;
-    return Math.round(num * factor) / factor; // round first the factor back out
+const calculator = {
+    absoluteValue: function (num) {
+        return Math.abs(num);
+    },
+    power: function (base, exponent) {
+        return Math.pow(base, exponent);
+    },
+    squareRoot: function (num) {
+        return Math.sqrt(num);
+    },
+    maxMin: function (numbers) {
+        return {
+            max: Math.max(...numbers),
+            min: Math.min(...numbers)
+        };
+    },
+    randomNum: function (max, min = 0) {
+        let randNum = Math.random();
+        return randNum * (max - min) + min;
+    },
+    customRound: function (num, dec) {
+        let factor = 10 ** dec;
+        return Math.round(num * factor) / factor; // round first the factor back out
+    },
 }
-console.log(roundToDecimalPlace(27.5876457, 3)); // 27.588
 
-// Testing the calculator functions
-console.log("Absolute Value of -45.67:", calculator.absoluteValue(-45.67)); // 45.67
-console.log("5 raised to the power of 3:", calculator.power(5, 3)); // 125
-console.log("Square root of 144:", calculator.squareRoot(144)); // 12
-console.log("Max and Min from [3, 78, -12, 0.5, 27]:", calculator.maxMinFinder([3, 78, -12, 0.5, 27])); // { max: 78, min: -12 }
-console.log("Random number between 1 and 50:", calculator.randomNumberGenerator(1, 50)); // Random number between 1 and 50
-console.log("23.67891 rounded to 2 decimal places:", calculator.customRounding(23.67891, 2)); // 23.68
+// Test functions
+console.log("Absolute Value of -45.67:  ", calculator.absoluteValue(-45.67)); // 45.67
+console.log("5 raised to the power of 3:  ", calculator.power(5, 3)); // 125
+console.log("Square root of 144:  ", calculator.squareRoot(144)); // 12
+console.log("Max and Min from [3, 78, -12, 0.5, 27]:  ", calculator.maxMin([3, 78, -12, 0.5, 27])); // { max: 78, min: -12 }
+console.log("Random number between 1 and 50:  ", calculator.randomNum(1, 50)); // Random number between 1 and 50
+console.log("23.67891 rounded to 2 decimal places:  ", calculator.customRound(23.67891, 2)); // 23.68
